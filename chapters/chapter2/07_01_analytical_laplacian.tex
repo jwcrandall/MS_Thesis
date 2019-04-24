@@ -1,0 +1,177 @@
+\subsection{Analytical Solution to a Laplacian Steady State Heat Transfer PDE}\label{section:pdeDerivation}
+
+
+Laplace's equation is a second-order partial differential equation which produces, as a solution, harmonic functions that accurately describe the behavior of electric, gravitational and fluid potentials.  It has no time dependence, only a spatial dependence, and is often written as  
+
+\begin{equation}\label{eq:supplementalLaplace}
+\nabla^2 \varphi = 0
+\end{equation}
+
+where $\nabla^2$ is the Laplace operator and $\varphi$ is a scalar function.
+
+For the purpose of simplicity, we will use Cartesian coordinate system and only discuss spatial variables $x$ and $y$, which allows Laplace's equation to be rewritten as
+
+\begin{equation}\label{eq:supplementalLaplace2D}
+\frac{\partial^2 \varphi}{\partial x^2} + \frac{\partial^2 \varphi}{\partial y^2} = 0
+\end{equation}
+
+which is equivalent to equation \ref{eq:supplementalLaplace} for two dimensions. We are therefor solving a second order linear PDE. This describes a steady state system, and can be used for: 
+
+\begin{itemize}
+  \item steady state temperature distributions
+  \item steady state stress distributions
+  \item steady state potential distributions
+  \item steady state flows
+\end{itemize}
+
+We will evaluate the problem over the rectangular region $0 \leq x \leq L$, $0\leq y \leq H$ for a fixed boundary temperature distribution.
+
+\begin{equation}\label{eq:supplementalBoundaryFunction}
+\begin{split}
+\varphi \left( x , 0 \right) & = f _ { 1 } \left( x \right) \\ 
+\varphi \left( L , y \right) & = g _ { 2 } \left( y \right) \\ 
+\varphi \left( x , H \right) & = f _ { 2 } \left( x \right) \\ 
+\varphi \left( 0 , y \right) & = g _ { 1 } \left( y \right)
+\end{split}
+\end{equation}
+
+The four fixed boundary temperature distributes are non homogeneous, meaning that we cannot apply the  separation of variables technique to solve the problem. However we can divide $\varphi \left(x,y \right)$ into its four components, where each component $\varphi_i$ will satisfy one non-zero boundary condition and three zero boundary conditions. 
+
+\begin{equation}\label{eq:supplementalFourComponents}
+\begin{split}
+\varphi \left( x , y \right) = \varphi _ { 1 } \left( x , y \right) + \varphi _ { 2 } ( x , y ) + \varphi _ { 3 } \left( x , y \right) + \varphi _ { 4 } \left( x , y \right)
+\end{split}
+\end{equation}
+
+With this in mind we will set our non-zero boundary condition to be at the top of our problem which will act as a heat source when we compare our analytical result to our electrical and optical solutions.
+
+
+\begin{equation}\label{eq:supplementalOneNonZero}
+\begin{array} {c c c c} 
+{ \mathrm { BC1 } : } & { \varphi _ { 3 } \left( x , 0 \right) = 0 } & { \mathrm { for } } & { 0 \leq x \leq L} \\ 
+{ \mathrm { BC2 } : } & { \varphi _ { 3 } \left( L , y \right) = 0 } & { \mathrm { for } } & { 0 \leq y \leq H} \\ 
+{ \mathrm { BC3 } : } & { \varphi _ { 3 } \left( x , H \right) = f _ { 2 } \left( x \right) } & { \mathrm { for } } & { 0 \leq x \leq L} \\ 
+{ \mathrm { BC4 } : } & { \varphi _ { 3 } \left( 0 , y \right) = 0 } & { \mathrm { for } } & { 0 \leq y \leq H} 
+\end{array}
+\end{equation}
+
+Now we can apply separation of variables to each $\varphi_i$ function. For $\varphi_3 \left(x,y \right)$ we set the following
+
+\begin{equation}\label{eq:supplementalSov}
+\begin{split}
+\varphi _ { 3 } \left( x , y \right) = X \left( x \right) Y \left( y \right)
+\end{split}
+\end{equation}
+
+The three homogeneous boundary conditions will yield the following conditions 
+
+\begin{equation}\label{eq:supplementalSovThreeZero}
+\begin{array} { c c c c } 
+{ \mathrm { BC1 } : } & { X\left(x\right)Y\left(0\right)= 0 } & { \Rightarrow } & { Y\left(0\right) = 0} \\ 
+{ \mathrm { BC2 } : } & { X\left(L\right)Y\left(y\right) = 0 } & { \Rightarrow }  & { X\left(L\right) = 0} \\ 
+{ \mathrm { BC4 } : } & { X\left(0\right)Y\left(y\right) = 0 } & { \Rightarrow } & { X\left(0\right) = 0} \end{array}
+\end{equation}
+
+Substitution of \ref{eq:supplementalSov} into \ref{eq:supplementalLaplace2D} yields
+
+\begin{equation}\label{eq:supplementalSovLaplace2D}
+X ^ { \prime \prime } \left( x \right) Y \left( y \right) + X \left( x \right) Y ^ { \prime \prime } \left( y \right) = 0
+\end{equation}
+
+which is separated into
+
+\begin{equation}\label{eq:supplementalSovk}
+\frac{X''\left(x\right)}{X\left(x\right)} = -\frac{Y''\left(y\right)}{Y\left(y\right)} = k
+\end{equation}
+
+where k is a constant equal to, greater than, or less then zero. The separation yields the following problems  for $X$ and $Y$
+
+\begin{equation}\label{eq:supplementalSovX}
+X\left(x\right) ^ { \prime \prime } - k X\left(x\right) = 0 , \quad X \left( 0 \right) = X \left( L \right) = 0
+\end{equation}
+
+and
+
+\begin{equation}\label{eq:supplementalSovY}
+Y\left(y\right) ^ { \prime \prime } + k Y\left(y\right) = 0 , \quad Y \left( 0 \right) = 0
+\end{equation}
+
+For $X(x)$ we now need to find if a nontrivial solution exists for a value of k
+\begin{enumerate}
+  \item Case $k>0$
+  \begin{enumerate}
+  	\item Boundary Value Problem: $X(x)^{\prime\prime}-kX(x)=0$, $X(0)=X(L)=0$
+  	\item General Solution: $X(x) = C_1 e^{\sqrt{k}x} + C_2 e^{-\sqrt{k}x}$
+    \item Boundary Condition: $X(0) = 0$ implies that $C_1 + C_2 = 0$, or $C_2 = -C_1$, so that $X(x)=C_1 [e^{\sqrt{k}x} - e^{-\sqrt{k}x}  ] = 2C_1 \sinh ( \sqrt{k}x )$
+    \item Boundary Condition: $X(L) = 0$ implies that $C_2\sinh (\sqrt{k}L) = 0$, which is satisfied only if $C_2 =0$. This follows from the fact that $\sinh(x)$ is zero only at $x = 0$.  
+    \item Trivial Solution: The only solution to the boundary value problem for $k>0$ is the trivial solution $X(x)=0$.
+  \end{enumerate}
+  \item Case $k = 0$
+  \begin{enumerate}
+  	\item Boundary Value Problem: $X(x)^{\prime\prime}=0$, $X(0)=X(L)=0$
+  	\item General Solution: $X(x)=C_1x+C_2$
+    \item Boundary Condition: $X(0)=0$ implies that $C_2 = 0$. 
+    \item Boundary Condition: $X(L)=0$ implies that $C_1L = 0$, or $C_1 = 0$.  
+    \item Trivial Solution: The only solution to the case $k=0$ is $X(x) = 0$ 
+  \end{enumerate}
+  \item Case $k<0$
+  \begin{enumerate}
+  	\item Boundary Value Problems: $X(x)^{\prime\prime}-kX(x)=0$, $X(0)=X(L)=0$
+  	\item Define: $k = -\lambda$ so the $\lambda > 0$
+  	\item General Solution: $X(x) = C_1\cos(\sqrt{\lambda}x) + C_2\sin(\sqrt{\lambda}x)$
+    \item Boundary Condition: $X(0) = 0$ implies that $C_1 + C_2 \cdot 0 = 0$ which implies that $C_1 = 0$
+    \item Boundary Condition: $X(L) = 0$ combined with $X(x)=C_2\sin(\sqrt{\lambda}x)$ implies that $\sin(\sqrt{\lambda}L) = 0$
+  \end{enumerate}
+\end{enumerate}
+
+A nontrivial solution exists for $k<0$. Since $L$ is fixed, we must adjust $\lambda$ in order that the above equation is satisfied. We set $k=-\lambda$, where $\lambda > 0$ gives
+
+\begin{equation}\label{sovXLambda}
+X\left(x\right) ^ { \prime \prime } + \lambda X\left(x\right) = 0 , \quad X \left( 0 \right) = 0 , \quad X \left( L \right) = 0
+\end{equation}
+
+with eigenvalues of 
+
+\begin{equation}\label{eigen}
+\lambda = \lambda _ { n } = \left( \frac { n \pi } { L } \right) ^ { 2 } , \quad n = 1,2,3 , \cdots
+\end{equation}
+
+and associated eigenfunctions
+
+\begin{equation}\label{eigenfunction}
+X _ { n } \left( x \right) = \sin \left( \frac { n \pi } { L } \right)
+\end{equation}
+
+Now consider the $Y$ equation while recalling that $k=-\lambda$ so that $k_n = -\lambda_n$. The associated $Y_n$ function will satisfy the differential equation
+
+\begin{equation}\label{eq:ivpY}
+Y\left(y\right) ^ { \prime \prime } - \left( \frac{n\pi}{L} \right)^2 Y\left(y\right) = 0 , \quad Y \left( 0 \right) = 0
+\end{equation}
+
+Equation \ref{eq:ivpY} is not longer a boundary value problem but is now an initial value problem with only one condition. The general solution can be written as
+
+\begin{equation}\label{eq:ivpYGS}
+Y_{ n } \left( y \right) = A _ { 1 } e ^ { n \pi y / L } + A _ { 2 } e ^ { - n \pi y / L }
+\end{equation}
+
+but it is more convenient to use a hyperbolic functions
+
+\begin{equation}\label{eq:ivpYGSHyper}
+Y _ { n } \left( y \right) = B _ { 1 } \cosh \left( \frac{n \pi y} { L } \right) + B _ { 2 } \sinh \left(\frac{ - n \pi y }{ L }\right)
+\end{equation}
+
+The condition $Y \left( 0 \right) = 0$ implies that $B_1 = 0$ This is due to the fact that $\cosh \left(0\right) = 1$ and $\sinh \left(0\right) = 0$. Therefor for $Y_n(0)$ to equal $0$, $B_1$ must equal $0$. This shows that the $Y_n \left(y\right)$ function associated with the $X_n \left(x\right)$ function is
+
+\begin{equation}\label{eq:ivpYSol}
+Y _ { n } \left( y \right) =  B _ { 2 } \sinh \left(\frac{ - n \pi y }{ L }\right)
+\end{equation}
+
+This results in the product solutions yielded by the separation of variables method up to a constant.
+
+\begin{equation}\label{eq:sovSol}
+\begin{aligned} 
+\varphi _ { 3 , n } \left( x , y \right) & = X _ { n } \left( x \right) Y _ { n } \left( y \right) 
+= \sin \left( \frac { n \pi x } { L } \right) \sinh \left(\frac { n \pi y } { L } \right)
+& \text{for } n=1,2,3,\dots
+\end{aligned}
+\end{equation}

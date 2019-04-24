@@ -1,0 +1,356 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document type, global settings, and packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[12pt]{report}   %12 point font for Times New Roman
+\usepackage{graphicx}  %for images and plots
+\usepackage[letterpaper, left=1.25in, right=1.25in, top=1in, bottom=1in]{geometry}
+\usepackage{setspace}  %use this package to set linespacing as desired
+
+\setcounter{tocdepth}{3}% Include \subsubsection in ToC
+\setcounter{secnumdepth}{4}
+
+\usepackage{times}  %set Times New Roman as the font
+\usepackage{siunitx} % for Scientific notation
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Setting Titles and Table of Contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[explicit]{titlesec}  %title control and formatting
+\usepackage[titles]{tocloft}  %table of contents control and formatting
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Indent first Paragraphs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{indentfirst}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Needed for Bibliography Compilation (could cause?)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[backend=bibtex, sorting=none, bibstyle=ieee]{biblatex}  %reference manager
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% More? Formatting (Checked)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[bookmarks=true, hidelinks]{hyperref}
+\usepackage[page]{appendix}  %for appendices
+\usepackage{rotating}  %for rotated, landscape images
+\usepackage[normalem]{ulem}  %for italicized text
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Math and Table Formatting (Checked)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath} %facilitate writing math formulas
+
+\usepackage{multirow}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{subcaption}
+\usepackage{tabularx}
+% to color the rows of table
+\usepackage{color}
+\usepackage{colortbl}
+
+\usepackage{bm,amsmath,amssymb,color,subfigure}
+\usepackage{breqn}  % <------ added here
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Vita (CV)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{makeidx}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[dvipsnames,svgnames,table]{xcolor}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{ulem}
+%Already called
+%\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Add your bibliography file here
+\bibliography{references}
+
+% prevent certain fields in references from printing in bibliography
+\AtEveryBibitem{\clearfield{issn}}
+\AtEveryBibitem{\clearlist{issn}}
+
+\AtEveryBibitem{\clearfield{language}}
+\AtEveryBibitem{\clearlist{language}}
+
+\AtEveryBibitem{\clearfield{doi}}
+\AtEveryBibitem{\clearlist{doi}}
+
+\AtEveryBibitem{\clearfield{url}}
+\AtEveryBibitem{\clearlist{url}}
+
+\AtEveryBibitem{%
+  \ifentrytype{online}
+    {}
+    {\clearfield{urlyear}\clearfield{urlmonth}\clearfield{urlday}}}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Nomenclatures
+%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{nomencl}
+\makenomenclature
+
+
+%% This will add the subgroups
+%----------------------------------------------
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{A}{Analytical Expressions}{%
+  \ifstrequal{#1}{B}{Number Sets}{%
+  \ifstrequal{#1}{C}{Other Symbols}{}}}%
+]}
+%----------------------------------------------
+
+%% This will add the units
+%----------------------------------------------
+\newcommand{\nomunit}[1]{%
+\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+%----------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Used with Abbreviations & Glossary of Terms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[acronym]{glossaries}
+\loadglsentries{glossary.tex}
+\makeglossaries
+\renewcommand*\glspostdescription{\dotfill}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Cross referencing with the xr package in Overleaf
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xr}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Start of Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\doublespacing  %set line spacing
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title Page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\currentpdfbookmark{Title Page}{01_titlePage}  %add PDF bookmark for this page
+\input{pre/01_titlePage.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Copyright Page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagenumbering{roman}
+\setcounter{page}{2} % set the page number appropriately based on the number of intro pages
+\currentpdfbookmark{Copyright}{02_copyright}  %add PDF bookmark for this page
+\input{pre/02_copyright.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dedication
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Dedication}
+%\currentpdfbookmark{Dedication_new}{03_dedication}  %add PDF bookmark for this page
+\input{pre/03_dedication.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Acknowledgments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Acknowledgments}
+\input{pre/04_acknowledgements.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Abstract of Thesis}
+\input{pre/05_abstract.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table of Contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Format for Table of Contents
+\renewcommand{\cftchapdotsep}{\cftdotsep}  %add dot separators
+\renewcommand{\cftchapfont}{\bfseries}  %set title font weight
+\renewcommand{\cftchappagefont}{}  %set page number font weight
+\renewcommand{\cftchappresnum}{Chapter }
+\renewcommand{\cftchapaftersnum}{:}
+\renewcommand{\cftchapnumwidth}{5em}
+
+\renewcommand{\cftchapafterpnum}{\vskip\baselineskip} %set correct spacing for entries in single space environment
+\renewcommand{\cftsecafterpnum}{\vskip\baselineskip}  %set correct spacing for entries in single space environment
+\renewcommand{\cftsubsecafterpnum}{\vskip\baselineskip} %set correct spacing for entries in single space environment
+\renewcommand{\cftsubsubsecafterpnum}{\vskip\baselineskip} %set correct spacing for entries in single space environment
+
+%format title font size and position (this also applies to list of figures and list of tables)
+\titleformat{\chapter}[hang]{\normalfont\bfseries\filcenter}{\chaptertitlename\ \thechapter}{0pt}{#1}
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}	%controls vertical margins on title
+  
+\renewcommand\contentsname{Table of Contents}
+\currentpdfbookmark{Table of Contents}{TOC}
+\begin{singlespace}
+\tableofcontents
+\end{singlespace}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% List of figures and tables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\begin{singlespace}
+\setlength\cftbeforefigskip{\baselineskip}  %manually set spacing between entries
+%\currentpdfbookmark{List of Figures_new}{LOF}  %add PDF bookmark for this page
+\listoffigures
+\end{singlespace}
+
+\clearpage
+
+%\phantomsection
+%\addcontentsline{toc}{chapter}{List of Tables}
+%\begin{singlespace}
+%	\setlength\cftbeforetabskip{\baselineskip}  %manually set spacing between entries
+	%\currentpdfbookmark{List of Tables_new}{LOT}  %add PDF bookmark for this page
+%	\listoftables
+%\end{singlespace}
+
+%\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nomenclature
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\phantomsection
+%\addcontentsline{toc}{chapter}{Nomenclature}
+%\currentpdfbookmark{Nomenclature_new}{N}  %add PDF bookmark for this page
+%\printnomenclature
+%\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% List of Abbreviations 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+%\currentpdfbookmark{List of Abbreviations_new}{LOA}  %add PDF bookmark for this page
+\printglossary[type=\acronymtype,title=List of Abbreviations]
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Glossary of Terms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Glossary of Terms}
+%\currentpdfbookmark{Glossary of Terms_new}{GOT}  %add PDF bookmark for this page
+\printglossary[title=Glossary of Terms]
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Chapters
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% resume page numbering for rest of document
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1} % set the page number appropriately
+
+% Adjust chapter title formatting
+\titleformat{\chapter}
+[hang] %
+{\normalfont\bfseries\filcenter} %spacing between titles
+{\chaptertitlename\ \thechapter\ -}
+{2pt}
+{{#1}}  %spacing between titles
+
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}	%controls vertical margins on title
+  
+% Adjust section title formatting
+\titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{#1}
+
+% Adjust subsection title formatting
+\titleformat{\subsection}{\normalfont}{\uline{\thesubsection}}{0em}{\uline{\hspace{1em}#1}}
+
+% Adjust subsubsection title formatting
+\titleformat{\subsubsection}{\normalfont}{\uline{\thesubsubsection}}{0em}{\uline{\hspace{1em}#1}}
+
+%%%%%%%%%%%%%%%%
+% Chapter 1 
+%%%%%%%%%%%%%%%%
+
+\input{chapters/chapter1.tex}
+
+%%%%%%%%%%%%%%%%
+% Chapter 2
+%%%%%%%%%%%%%%%%
+
+\input{chapters/chapter2.tex}
+
+%%%%%%%%%%%%%%%%
+% Chapter 3 
+%%%%%%%%%%%%%%%%
+
+\input{chapters/chapter3.tex}
+
+%%%%%%%%%%%%%%%%
+% References
+%%%%%%%%%%%%%%%%
+
+\begin{singlespace}  % use single-line spacing for multi-line text within a single reference
+	\setlength\bibitemsep{\baselineskip}  %manually set separation between items in bibliography to double space
+    \printbibliography[title={References}]
+\end{singlespace}
+
+\addcontentsline{toc}{chapter}{References}  %add References section to Table of Contents
+
+%%%%%%%%%%%%%%%%
+% Appendices
+%%%%%%%%%%%%%%%%
+
+\input{post/01_appendix.tex}
+
+%%%%%%%%%%%%%%%%
+% Vita 
+%%%%%%%%%%%%%%%%
+% \input{post/02_vita.tex}
+
+\end{document}

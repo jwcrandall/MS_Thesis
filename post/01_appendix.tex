@@ -1,0 +1,37 @@
+\begin{appendices}
+
+%Some Table of Contents entry formatting
+\addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{\appendixname\space}}
+\addtocontents{toc}{\protect\renewcommand{\protect\cftchapnumwidth}{6em}}
+
+%Begin individual appendices, separated as chapters
+
+\chapter{Software Development}
+
+\section{GitHub}\label{sourceCode}
+The software repository used to call simulations via their API's and plot output data is located in the private repository roc grid simulation \\ \url{https://github.com/openhpclgw/roc_grid_simulation} located within the GitHub Organization OPEN HPCL Collaboration at \\ \url{https://github.com/openhpclgw}. Engin Kayraklioglu developed the master branch of the Github repository, which I branched into my own work space named boundaryConditions, in which I wrote all my data processing Python code.
+
+\chapter{Computational Models}
+
+\section{Computation}
+
+\subsection{Computing Resources}\label{resources}
+
+\par The computations performed in this thesis utilize a variety of software tools described in Section \ref{tools} and well as developed source code described in Section \ref{sourceCode} where all computation has access to the same resources which are as follows: MacBook Pro (15-inch, Late 2016), Processor 2.9 GHz Intel Core i7, Memory 16 GB 2133 MHz LPDDR3, Graphics Radeon Pro 460 4 GB Intel HD Graphics 530 1536 MB.
+
+
+\section{Simulation Tools and Applications}\label{tools}
+
+\subsection{\gls{COMPSOL Multiphysics}}
+I used COMSOL Multiphysics to solve a heat transfer partial differential equation numerically in order to have a comparison for Photonic \acrshort{roc} and Metatronic \acrshort{roc} analog solutions. I also used COMSOL Multiphysics to simulate Metatronic \acrshort{roc} at different mesh scales.
+
+\subsection{Lumerical Interconnect}
+I used Lumerical Interconnect to view and understand the schematic of the Photonic \acrshort{roc}.
+
+\subsection{Wolfram Mathematica}
+I used Wolfram Mathematica to visualize the discretization of an analytical \acrshort {pde} solution.
+
+\subsection{\acrfull{spice}}
+I use \acrshort{spice} within my bounadryConditions Python code to generate and simulate an analog electrical resistance grid at different mesh scales.
+
+\end{appendices}

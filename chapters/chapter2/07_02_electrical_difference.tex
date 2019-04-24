@@ -1,0 +1,99 @@
+\subsection{Mapping of Difference Equation Approximation to Electrical Resistance Mesh}\label{section:electricalDifferenceEquation}
+
+
+\begin{equation}\label{eq:supplementalElectricalLaplace}
+  \nabla \cdot \epsilon \nabla \varphi = g 
+\end{equation}
+
+The use of an electrical mesh allows us to generate the solution of an approximation of the partial differential equation \ref{eq:supplementalElectricalLaplace} refereed to from here on as the electrical difference equation solution. In the partial difference equation \ref{eq:supplementalElectricalLaplace} where $\epsilon$ is the known scalar function, $\varphi$ is the function, and $g=0$ is  the function relationship  for a time independent Laplace second order partial differential equation. By performing \gls{linear interpolation} on Figure \ref{fig:electrical} and disregarding the higher order terms we say that Equation \ref{eq:supplementalElectricalLaplace} is asymptotically equal to:
+
+\begin{equation}\label{eq:2}
+\begin{split}
+  \nabla \cdot \epsilon \nabla \varphi \simeq \\
+  &\quad 
+  \frac{2}{h_1 + h_3} 
+  \Big[ 
+  	\frac{\epsilon_1}{h_1} ( \varphi(\vec{P_1}) - \varphi(\vec{P_0})) 
+  +
+  	\frac{\epsilon_3}{h_3} ( \varphi(\vec{P_3}) - \varphi\vec{P_0})) 
+  \Big]\\
+  &\quad
+  + 
+    \frac{2}{h_2 + h_4} 
+  \Big[ 
+  	\frac{\epsilon_2}{h_2} ( \varphi(\vec{P_2}) - \varphi(\vec{P_0})) 
+  +
+  	\frac{\epsilon_4}{h_4} ( \varphi(\vec{P_4}) - \varphi(\vec{P_0})) 
+  \Big] 
+\end{split}
+\end{equation}
+
+By setting neighboring points equal distant $h = h_1 = h_2 = h_3 = h_4$ and having a constant scalar function $\epsilon = \epsilon_1 = \epsilon_2 = \epsilon_3 = \epsilon_4$
+
+\begin{equation}\label{eq:3}
+\begin{split}
+  \nabla \cdot \epsilon \nabla \varphi \simeq \\
+  &\quad
+  \frac{2}{h + h} 
+  \Big[ 
+  	\frac{\epsilon}{h} ( \varphi(\vec{P_1}) - \varphi(\vec{P_0})) 
+  +
+  	\frac{\epsilon}{h} ( \varphi(\vec{P_3}) - \varphi(\vec{P_0})) 
+  \Big]\\
+  &\quad
+  +
+  \frac{2}{h + h} 
+  \Big[ 
+  	\frac{\epsilon}{h} ( \varphi(\vec{P_2}) - \varphi(\vec{P_0})) 
+  +
+  	\frac{\epsilon}{h} ( \varphi(\vec{P_4}) - \varphi(\vec{P_0})) 
+  \Big]\\
+  &\quad
+\end{split}
+\end{equation}
+
+By simplifying Eq. \ref{eq:3} you are left with
+
+\begin{equation}\label{eq:4}
+\begin{split}
+  \nabla^2 \varphi \simeq 
+  \frac{1}{h^2} \Big[ \varphi(\vec{P_1}) +  \varphi(\vec{P_2}) +  \varphi(\vec{P_3}) +  \varphi(\vec{P_4}) - 4( \varphi(\vec{P_0}) ) \Big]
+\end{split}
+\end{equation}
+
+
+Through the assignment of values and directions in Figure \ref{fig:electrical} and the application of Kirchoff's laws the following applies for $n = 1,n=2,n = 3, n = 4$:
+
+\begin{equation}\label{eq:5}
+	I_n = \frac{V_n - V_0}{R_n}
+\end{equation}
+
+Kirchoff's laws also show that:
+
+\begin{equation}\label{eq:6}
+	\sum_{n=1}^{4} I_n = - I_0 
+\end{equation}
+
+Eq. \ref{eq:5} and Eq. \ref{eq:6} result in: 
+
+\begin{equation}\label{eq:7}
+	\frac{V_1 - V_0}{R_1} + \frac{V_2 - V_0}{R_1} + \frac{V_3 - V_0}{R_3} + \frac{V_4 - V_0}{R_4} = -I_0
+\end{equation}
+
+By defining $R_0$ in the following manner
+\begin{equation}\label{eq:8}
+	R_1 = R_2 = R_3 = R_4 = h^2R_0
+\end{equation}
+
+and by defining the current $I_0$ fed into $P_0$ to be
+\begin{equation}\label{eq:9}
+	I_0 = -g/R_0
+\end{equation}
+
+where $g$ is the function relationship defined in Equation \ref{eq:supplementalElectricalLaplace}, a formal analogy can be shown between the voltages $V_n$ appearing at the junctions and the sough function $\varphi$ by comparing Equation \ref{eq:4} and a redefined Equation \ref{eq:7} through the definitions from Equation \ref{eq:8} and \ref{eq:9} in order show that  
+
+\begin{equation}\label{eq:10}
+  \nabla^2 \varphi \simeq  \frac{1}{h^2} \Big[ V_1 + V_2 + V_3 + V_4 - 4V_0 \Big]
+\end{equation}
+
+The solution to the function $\varphi$ in the differential equation Equation \ref{eq:supplementalElectricalLaplace} has been approximated through the use of a difference equation. The solution is attained through measurement of voltage values at grid points. All that remains is to set the required boundary conditions to obtain the full solution if $g \equiv 0$ everywhere. If $g \neq 0$ currents from Equation \ref{eq:9} have to be fed into mesh points in order to use the resistive mesh to solve Poisson class \acrshort{pde}s. The resistance network performs the "relaxation technique" automatically and instantaneously for a Laplace equation.

@@ -1,0 +1,25 @@
+\begin{center}
+\textbf{Abstract of Thesis}
+\begin{singlespace}
+\textbf{Investigating Accuracy of the  Reconfigurable Optical Computer (ROC) in Metatronics for Solving Partial Differential Equations}
+\end{singlespace}
+\end{center}
+
+\par Nanoscale area metatronic analog circuitry utilizes relative permittivity between material interfaces to confine and direct electric displacement field and electric displacement current density operating at $f = \SI{193}{T\hertz}$. This is interesting because we have shown that we can map an analog finite difference algorithm into metatronics, while avoiding the \acrfull{pde} decreasing accuracy at increasing node density issue encountered by microscale area photonic analog circuitry also operating at $f = \SI{193}{T\hertz}$ 
+
+\par The microscale area electronic analog circuitry, operating at $f \approx \SI{300}{G\hertz}$, and the nanoscale area metatronic circuitry both exhibit \acrfull{pde} solution increasing accuracy at increasing node density, in the same fashion to a software driven digital hardware based finite difference algorithm \acrshort{pde} solution approaching the accuracy of analytically derived pde solution through increased node density.
+
+\par With the proper allocation of hardware source and sample location for the metatronic and electronic circuitry we have shown that both analog hardwares can operate in constant time $0(1)$, and thus merit integration into larger software based parallel multi grid methods. However, the larger metatronic operating frequency increases its Shannon–Hartley theorem limited repetition rate (clock speed) into the Terahertz, while the smaller electronic operating frequency relegates its Shannon–Hartley theorem limited repetition rate (clock speed) to the Gigahertz.
+
+\par Through the use of resistors, capacitors, and inductors the electronic circuit can be reconfigured to solve Laplace, Poisson, diffusion, and wave partial differential equations. In principal the metatronic circuit can bias its epsilon near zero material to induce changes in its relative permittivity inducing metatronic capacitance and inductance. Although this has not been shown in simulation at this point. Metatronic resistance occurs when the imaginary components of the epsilon near zeros material is not equal to zero.
+
+\par It is difficult to understand all of the constraints one must account for in hardware design if one does not fully understand the final application the hardware solves. Any \acrshort{pde} solution method that employs a mesh or grid, and ultimately a finite difference, in the process of generating a solution suffers from discretization error. The only method that does not are analytically derived solutions, which is why it is important to understand what makes analytical methods challenging and not widely used, because in theory, the \acrshort{pde} solutions they produce will be the most accurate.
+
+\par The mapping of a digital finite difference algorithm to an analog circuit requires the operational frequency and corresponding wavelengths size to exceed the diameter of the analog grid. This relationship determines the behavior of the electronic lumped, photonic distributed, and metatronic lumped grid based algorithms accuracy when solving \acrshort{pde}s. A lumped circuit node directs current, or displacement current density based on the direction and magnitude that the node's neighborhood is directing their current or displacement current density. In the case of a lumped circuit the neighborhood of nodes is the entire circuit. In a distributed circuit each nodes neighborhood is defined as all the nodes within one wavelength of operation. If the distance between two adjacent nodes is greater than one wavelength of operation, as is the case in the current fabricated photonic circuit, then all of the nodes are isolated. An isolated node does not feel the effects of a neighborhood because it has none, and instead must determine a new way to direct its optical intensity. The current practice is to engineer the geometry of the node to direct an equal amount of incoming optical intensity into all of the outgoing waveguides. This equal splitting is fixed in passive silicon.
+
+\Par The effects on \acrshort{pde} accuracy of lumped neighborhood based variable splitting versus distributed isolated node fixed splitting begin to reveal themselves as the number of nodes in the circuit increases. Changes in grid size, density, or both point to a trend of increasing accuracy for the lumped element circuits and decreasing accuracy for the isolated node circuits when compared to analytical continuous and digital numerical discrete pde solutions.
+
+\par This Thesis' findings encompassing the combined advantages of increasing accuracy, preserved reconfigurability, increased repetition rate, and decreased footprint for metatronic circuits solving \acrlong{pde}s paves the wave for experimental fabricated demonstrations to validate this theoretical work.
+
+\clearpage
+%\pagenumbering{gobble}  %remove page number on summary page

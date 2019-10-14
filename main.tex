@@ -136,6 +136,7 @@
 \usepackage[acronym]{glossaries}
 \loadglsentries{glossary.tex}
 \makeglossaries
+%\renewcommand{\glossarypreamble}{\vspace*{-\baselineskip}}
 \renewcommand*\glspostdescription{\dotfill}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -215,8 +216,7 @@
 
 %format title font size and position (this also applies to list of figures and list of tables)
 \titleformat{\chapter}[hang]{\normalfont\bfseries\filcenter}{\chaptertitlename\ \thechapter}{0pt}{#1}
-\titlespacing*{\chapter}{0pt}{0pt}{0pt}	%controls vertical margins on title
-  
+\titlespacing*{\chapter}{0pt}{-16pt}{12pt}	%controls vertical margins on title
 \renewcommand\contentsname{Table of Contents}
 \currentpdfbookmark{Table of Contents}{TOC}
 \begin{singlespace}
